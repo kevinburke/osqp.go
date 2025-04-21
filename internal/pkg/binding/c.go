@@ -127,3 +127,29 @@ func (o *OSQPWorkSpace) CleanUp() {
 		C.c_free(unsafe.Pointer(o.settings))
 	}
 }
+
+// SolutionSlice returns the entire optimal weight vector as a []float64.
+func (o OSQPWorkSpace) SolutionSlice() []float64 {
+	// Extract solution
+	x_ptr := unsafe.Pointer(o.work.solution.x)
+	x_len := int(o.data.n)
+	x_slice := (*[1 << 30]C.double)(x_ptr)[:x_len:x_len]
+
+	// Copy to Go slice
+	out := make([]float64, x_len)
+	for i := range out {
+		out[i] = float64(x_slice[i])
+	}
+	return out
+}
+
+// Status returns the solver status string (e.g. "solved").
+func (o OSQPWorkSpace) Status() string {
+	statusPtr := (*C.char)(unsafe.Pointer(&o.work.info.status[0]))
+	return C.GoString(statusPtr)
+}
+
+// PrimalObj returns the objective value at the solution.
+func (o OSQPWorkSpace) PrimalObj() float64 {
+	return float64(o.work.info.obj_val)
+}
