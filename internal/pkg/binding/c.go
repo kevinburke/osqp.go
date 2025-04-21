@@ -2,7 +2,8 @@ package binding
 
 /*
 #cgo CFLAGS: -I../../../libs/include
-#cgo LDFLAGS: -L../../../libs/out -losqp -Wl,-rpath=./libs/out
+#cgo linux LDFLAGS: -L../../../libs/out -losqp -Wl,-rpath=./libs/out
+#cgo darwin LDFLAGS: -L${SRCDIR}/libs/out -losqp -Wl,-rpath,@loader_path/libs/out
 #include "osqp.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -11,51 +12,50 @@ import "C"
 import (
 	"fmt"
 	"unsafe"
-) 
+)
 
 type Data struct {
-	N 		int64
-	M 		int64
-	P_x 	[]float64
-	P_i 	[]int
-	P_p 	[]int
-	P_nnz	int64
-	A_x 	[]float64
-	A_i 	[]int
-	A_p 	[]int
-	A_nnz	int64
-	Q 		[]float64
-	L 		[]float64
-	U 		[]float64
+	N     int64
+	M     int64
+	P_x   []float64
+	P_i   []int
+	P_p   []int
+	P_nnz int64
+	A_x   []float64
+	A_i   []int
+	A_p   []int
+	A_nnz int64
+	Q     []float64
+	L     []float64
+	U     []float64
 }
 
 type OSQPWorkSpace struct {
-	work 		*C.OSQPWorkspace
-	settings 	*C.OSQPSettings
-	data 		*C.OSQPData
+	work     *C.OSQPWorkspace
+	settings *C.OSQPSettings
+	data     *C.OSQPData
 }
 
 func (o OSQPWorkSpace) Solution() (float32, float32) {
 	// Extract solution
-    x_ptr := unsafe.Pointer(o.work.solution.x)
-    x_len := int(o.data.n)
-    x_cap := int(o.data.n)
-    x_slice := (*[1 << 30]C.double)(x_ptr)[:x_len:x_cap]
-    x := make([]float64, x_len)
-    for i := range x {
-        x[i] = float64(x_slice[i])
-        fmt.Printf("x[%d] = %f\n", i+1, x[i])
-    }
+	x_ptr := unsafe.Pointer(o.work.solution.x)
+	x_len := int(o.data.n)
+	x_cap := int(o.data.n)
+	x_slice := (*[1 << 30]C.double)(x_ptr)[:x_len:x_cap]
+	x := make([]float64, x_len)
+	for i := range x {
+		x[i] = float64(x_slice[i])
+		fmt.Printf("x[%d] = %f\n", i+1, x[i])
+	}
 
 	fmt.Println(x)
-	
+
 	return float32(*o.work.solution.x), float32(*o.work.solution.y)
 }
 
-
 func NewOSQP() *OSQPWorkSpace {
 	settings := (*C.OSQPSettings)(C.c_malloc(C.sizeof_OSQPSettings))
- 
+
 	if settings != nil {
 		C.osqp_set_default_settings(settings)
 	}
@@ -87,7 +87,7 @@ func (o *OSQPWorkSpace) UpdateBounds(lNew, uNew []float64) {
 	C.osqp_update_bounds(o.work, l, u)
 }
 
-func (o *OSQPWorkSpace) UpdatePMat(p_x	[]float64) {
+func (o *OSQPWorkSpace) UpdatePMat(p_x []float64) {
 	C.osqp_update_P(o.work, (*C.c_float)(unsafe.Pointer(&p_x[0])), nil, o.data.P.nzmax)
 }
 
