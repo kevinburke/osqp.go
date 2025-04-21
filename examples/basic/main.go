@@ -33,5 +33,3 @@ func main() {
 
 	newOSQP.CleanUp()
 }
-
- 

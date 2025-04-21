@@ -3,7 +3,7 @@ package binding
 /*
 #cgo CFLAGS: -I../../../libs/include
 #cgo linux LDFLAGS: -L../../../libs/out -losqp -Wl,-rpath=./libs/out
-#cgo darwin LDFLAGS: -L${SRCDIR}/libs/out -losqp -Wl,-rpath,@loader_path/libs/out
+#cgo darwin LDFLAGS: -L${SRCDIR}/../../../libs/out -losqp
 #include "osqp.h"
 #include <stdlib.h>
 #include <stdio.h>
