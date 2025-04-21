@@ -52,6 +52,19 @@ func (o OSQPConfig) Solve() {
 	o.bind.Solve()
 }
 
+func (o OSQPConfig) Status() string {
+	return o.bind.Status()
+}
+
+func (o OSQPConfig) PrimalObj() float64 {
+	return o.bind.PrimalObj()
+}
+
+// SolutionSlice returns the entire optimal weight vector as a []float64.
+func (o OSQPConfig) SolutionSlice() []float64 {
+	return o.bind.SolutionSlice()
+}
+
 func (o OSQPConfig) UpdateLinCost(qNew []float64) {
 	o.bind.UpdateLinCost(qNew)
 }
