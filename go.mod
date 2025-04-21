@@ -1,8 +1,8 @@
-module github.com/jerensl/osqp.go
+module github.com/kevinburke/osqp.go
 
 go 1.20
 
-replace github.com/jerensl/osqp.go => ../../
+replace github.com/kevinburke/osqp.go => ../../
 
 require (
 	github.com/davecgh/go-spew v1.1.1 // indirect

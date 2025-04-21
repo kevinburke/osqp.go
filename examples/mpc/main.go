@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"math"
 
-	"github.com/jerensl/osqp.go"
+	"github.com/kevinburke/osqp.go"
 	"gonum.org/v1/gonum/mat"
 )
 

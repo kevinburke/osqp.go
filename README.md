@@ -3,8 +3,8 @@
 <div align="center">
 
   [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
-  [![GitHub Issues](https://img.shields.io/github/issues/jerensl/osqp.go.svg)](https://github.com/jerensl/osqp.go/issues)
-  [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/jerensl/osqp.go.svg)](https://github.com/jerensl/osqp.go/pulls)
+  [![GitHub Issues](https://img.shields.io/github/issues/kevinburke/osqp.go.svg)](https://github.com/kevinburke/osqp.go/issues)
+  [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kevinburke/osqp.go.svg)](https://github.com/kevinburke/osqp.go/pulls)
   [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
 
 </div>
@@ -60,11 +60,11 @@ To get started you need to compile the OSQP build in C or you can copy from libs
 To install the library you can run the command below.
 
 ```
-go get -u github.com/jerensl/osqp.go
+go get -u github.com/kevinburke/osqp.go
 ```
 
 ## 🎈 Usage <a name="usage"></a>
-See [examples/](https://github.com/jerensl/osqp.go/examples/) for a variety of examples.
+See [examples/](https://github.com/kevinburke/osqp.go/examples/) for a variety of examples.
 
 **Simple:**
 
@@ -72,7 +72,7 @@ See [examples/](https://github.com/jerensl/osqp.go/examples/) for a variety of e
 package main
 import (
 	"fmt"
-	"github.com/jerensl/osqp.go"
+	"github.com/kevinburke/osqp.go"
 )
 
 func main() {
@@ -101,9 +101,9 @@ func main() {
 - [OSQP](https://osqp.org/) - OSQP Library in C
 
 ## ✍️ Authors <a name = "authors"></a>
-- [@jerensl](https://github.com/jerensl) - Idea & Initial work
+- [@kevinburke](https://github.com/kevinburke) - Idea & Initial work
 
-See also the list of [contributors](https://github.com/jerensl/osqp.go/contributors) 
+See also the list of [contributors](https://github.com/kevinburke/osqp.go/contributors) 
 who participated in this project.
 
 ## 🎉 Acknowledgments <a name = "acknowledgments"></a>

@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/jerensl/osqp.go"
+	"github.com/kevinburke/osqp.go"
 )
 
 func main() {

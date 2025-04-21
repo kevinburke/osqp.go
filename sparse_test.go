@@ -3,7 +3,7 @@ package osqp_test
 import (
 	"testing"
 
-	"github.com/jerensl/osqp.go"
+	"github.com/kevinburke/osqp.go"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )

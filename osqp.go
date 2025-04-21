@@ -1,7 +1,7 @@
 package osqp
 
 import (
-	"github.com/jerensl/osqp.go/internal/pkg/binding"
+	"github.com/kevinburke/osqp.go/internal/pkg/binding"
 ) 
 
 type Data struct {
